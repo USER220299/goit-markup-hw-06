@@ -802,6 +802,7 @@ ul {
 }
 
 .form-input-icon {
+  display: block;
   position: relative;
 }
 .icon-modal-form {
