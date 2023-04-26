@@ -32,8 +32,8 @@
   --modal-form-input: #2e2f42;
   --form-name-color: #2e2f42;
   --color-text-form: #8e8f99;
-  --color-textarea: rgba(46, 47, 66, 0.4);
-  --hover-form-modal: #4d5ae5;
+  --focus-form-modal: #4d5ae5;
+  --border-color-input: rgba(46, 47, 66, 0.4);
 }
 body {
   font-family: var(--font-family);
@@ -537,6 +537,12 @@ ul {
   display: flex;
   gap: 24px;
 }
+.form-email::placeholder {
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: var(--white-color);
+}
 .footer-email {
   padding: 8px 16px;
 
@@ -545,19 +551,26 @@ ul {
   border-radius: 4px;
   border: 1px solid var(--white-color);
   background-color: transparent;
+  color: var(--white-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
-
+.btn-footer-icon {
+  position: relative;
+}
+.footer-icon-form {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translate(0, -50%);
+}
 .footer-btn {
-  display: block;
   min-width: 165px;
   height: 40px;
   border-radius: 4px;
   border: none;
-  margin-right: auto;
-  margin-left: auto;
-  /* transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   font-family: inherit;
   font-weight: 500;
@@ -567,6 +580,11 @@ ul {
   letter-spacing: 0.04em;
   color: var(--white-color);
   background-color: var(--base-btn-clr);
+}
+.footer-btn:hover,
+.footer-btn:focus {
+  background-color: var(--secondary-btn-clr);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px;
 }
 /* ---------------------Portfolio.html------------------- */
 
@@ -706,7 +724,7 @@ ul {
 }
 
 .modal {
-  padding: 24px;
+  padding: 0 24px 24px 24px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -757,6 +775,8 @@ ul {
   color: var(--form-name-color);
 }
 .style-label {
+  display: block;
+  margin-bottom: 4px;
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.01em;
@@ -764,41 +784,85 @@ ul {
 }
 .modal-form {
   display: block;
+  margin-top: 72px;
 }
-.content {
-  margin-top: 4px;
+.modal-input {
   margin-bottom: 8px;
-  padding: 8px 16px;
+  padding-left: 38px;
 
   width: 100%;
   height: 40px;
-  resize: none;
   border-radius: 4px;
-  border: 1px solid rgba(46, 47, 66, 0.4);
+  border: 1px solid var(--border-color-input);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.content:hover,
-.content:focus {
-  border-color: var(--hover-form-modal);
+.modal-input:focus {
+  outline: none;
+  border-color: var(--focus-form-modal);
 }
 
-.coments {
-  margin-top: 4px;
+.form-input-icon {
+  position: relative;
+}
+.icon-modal-form {
+  position: absolute;
+
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+
+  fill: var(--modal-icon);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-input:focus + .icon-modal-form {
+  fill: var(--focus-form-modal);
+}
+
+.modal-form-message {
   padding: 8px 16px;
+  margin-bottom: 16px;
 
   width: 100%;
   height: 120px;
   resize: none;
   border-radius: 4px;
-  border: 1px solid rgba(46, 47, 66, 0.4);
+  border: 1px solid var(--border-color-input);
 
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-form-message::placeholder {
   font-size: 12px;
   line-height: 1.16;
   letter-spacing: 0.04em;
-  color: var(--color-textarea);
+  color: rgba(46, 47, 66, 0.4);
 }
-.coments:hover,
-.coments:focus {
-  border-color: var(--hover-form-modal);
+.modal-form-message:focus {
+  outline: none;
+  border-color: var(--focus-form-modal);
+}
+.checkbox-icon {
+  position: relative;
+}
+.form-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 1px solid var(--border-color-input);
+  border-radius: 4px;
+}
+/* .icon-vector{
+  position: absolute;
+  wei
+  top: ;
+} */
+.policy-checkbox {
+  font-size: 12px;
+  line-height: 1.16;
+  letter-spacing: 0.04em;
+  color: var(--color-text-form);
+}
+.policy-checkbox-iris {
+  color: var(--focus-form-modal);
 }
 .modal-form-btn {
   display: block;
@@ -806,6 +870,7 @@ ul {
   height: 56px;
   border-radius: 4px;
   border: none;
+  margin-top: 24px;
   margin-right: auto;
   margin-left: auto;
 
@@ -817,4 +882,11 @@ ul {
   letter-spacing: 0.04em;
   color: var(--white-color);
   background-color: var(--base-btn-clr);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-form-btn:hover,
+.modal-form-btn:focus {
+  background-color: var(--secondary-btn-clr);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 4px;
 }
